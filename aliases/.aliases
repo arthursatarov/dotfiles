@@ -1,0 +1,76 @@
+# ----------------------------------------
+# CLI
+# ----------------------------------------
+
+# Change directories easily
+alias .='cd ..'
+alias ..='cd ../..'
+alias cd3='cd ../../..'
+alias cd4='cd ../../../..'
+alias cd5='cd ../../../../..'
+alias cd6='cd ../../../../../..'
+
+# Clear
+alias c="clear"
+alias cl="clear"
+alias clr="clear"
+
+# Control `ls` output with LSDelux
+alias ls="lsd"
+alias l="ls -l"
+alias la="ls -A"
+alias lla="ls -lA"
+alias lt="ls --tree"
+alias lta="lt -A"
+
+# Directorise
+alias md="mkdir -p"
+alias rd="rm -rf"
+
+mkcd () {
+  mkdir -p $1; cd $1
+}
+
+# Shortcuts
+alias lg="lazygit"
+alias rzsh="source ~/.zshrc"
+
+# ----------------------------------------
+# Composer
+# ----------------------------------------
+
+alias co="composer"
+alias coi="composer install"
+alias cou="composer update"
+
+# ----------------------------------------
+# Docker
+# ----------------------------------------
+
+alias dc="docker-compose"             # Docker-compose main command
+alias dcr="docker-compose restart"    # Restart container
+alias dcs="docker-compose stop"       # Stop a container
+alias dcu="docker-compose up -d"      # Build, (re)create, start, and attach to containers for a service
+alias dcd="docker-compose down"       # Stop and remove containers
+
+# ----------------------------------------
+# NPM
+# ----------------------------------------
+
+alias nig="npm i -g"       # Install dependencies globally
+alias nis="npm i -S"       # Install and save to dependencies in your package.json
+alias nid="npm i -D"       # Install and save to dev-dependencies in your package.json
+alias nu="ncu -u"
+alias nug="ncu -g"
+
+# ----------------------------------------
+# Tmux
+# ----------------------------------------
+
+alias tm="tmux"
+alias ta="tmux attach -t"           # Attach new tmux session to already running named session
+alias tad="tmux attach -d -t"       # Detach named tmux session
+alias ts="tmux new-session -s"      # Create a new named tmux session
+alias tl="tmux list-sessions"       # Displays a list of running tmux sessions
+alias tksv="tmux kill-server"       # Terminate all running tmux sessions
+alias tkss="tmux kill-session -t"   # Terminate named running tmux session

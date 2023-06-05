@@ -1,0 +1,18 @@
+[user]
+  name = Arthur Satarov
+  email = asv.webdev@gmail.com
+
+[core]
+  editor = nvim           # Set default editor
+  autocrlf = input        # Tell's Git to convert CRLF to LF on commit
+
+  # Use custom `.gitignore` and `.gitattributes`.
+  excludesfile = ~/.gitignore_global
+  attributesfile = ~/.gitattributes
+
+[init]
+  defaultBranch = main
+
+[push]
+  default = current       # Make `git push` automatically push relevant
+  followTags = true       # Make `git push` push relevant annotated tags when pushing branches out
