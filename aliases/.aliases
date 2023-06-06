@@ -27,12 +27,15 @@ alias lta="lt -A"
 alias md="mkdir -p"
 alias rd="rm -rf"
 
-mkcd () {
+mdcd () { # create dir and `cd` there
   mkdir -p $1; cd $1
 }
 
 # Shortcuts
+alias vi="nvim"
+alias vim="nvim"
 alias lg="lazygit"
+alias rr="ranger"
 alias rzsh="source ~/.zshrc"
 
 # ----------------------------------------
