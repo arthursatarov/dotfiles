@@ -1,0 +1,68 @@
+;; Основной слой с назначением клавиш
+(defsrc
+  esc  f1   f2   f3   f4   f5   f6   f7   f8   f9   f10  f11  f12
+  grv  1    2    3    4    5    6    7    8    9    0    -    =   bspc
+  tab  q    w    e    r    t    y    u    i    o    p    [    ]   \
+  caps a    s    d    f    g    h    j    k    l    ;    '    ret
+  lsft z    x    c    v    b    n    m    ,    .    /    rsft
+  lctl lmet lalt           spc            ralt rmet cmp  rctl
+)
+
+;; Время для срабатывания tap-hold и hold-release
+(defvar
+  tap-timeout 100   ;; Время, через которое считается, что была нажата только одна клавиша
+  hold-timeout 300  ;; Время удержания, после которого включается модификатор
+
+  tt $tap-timeout
+  ht $hold-timeout
+)
+
+;; Шаблон для переключения слоёв через тройное нажатие
+(deftemplate triple-tap-layer-switch (key layer-name)
+  $key (tap-dance $tt (
+    $key                          ;; Одинарное нажатие — обычный ввод символа
+    (macro $key $key)             ;; Двойное нажатие — двойной символ
+    (layer-switch $layer-name)    ;; Тройное нажатие — переключение слоя
+  ))
+)
+
+;; Основной слой
+(deflayermap (default)
+  ;; Переключение Caps Lock в Esc или Ctrl при удержании
+  caps (tap-hold $tt $ht esc lctl)
+
+  ;; Клавиши с модификаторами
+  a (tap-hold-release $tt $ht a lsft)   ;; Shift на удержании
+  s (tap-hold-release $tt $ht s lctl)   ;; Ctrl на удержании
+  d (tap-hold-release $tt $ht d lmet)   ;; Meta (Alt) на удержании
+  f (tap-hold-release $tt $ht f lalt)   ;; Alt на удержании
+  j (tap-hold-release $tt $ht j lalt)
+  k (tap-hold-release $tt $ht k lmet)
+  l (tap-hold-release $tt $ht l lctl)
+  ; (tap-hold-release $tt $ht ; rsft)    ;; Правая клавиша Shift на удержании
+
+  ;; Тройное нажатие для переключения в прозрачный слой
+  (template-expand triple-tap-layer-switch grv transparent)
+
+  ;; Пробел активирует расширенный слой при удержании
+  spc (tap-hold $tt $ht spc (layer-while-held extended))
+)
+
+;; Прозрачный слой
+(deflayermap (transparent)
+  (template-expand triple-tap-layer-switch grv default)  ;; Возврат на основной слой
+)
+
+;; Расширенный слой с функциями навигации и редактирования текста
+(deflayermap (extended)
+  ;; Навигация по тексту
+  u pgdn     ;; Page Down
+  o pgup     ;; Page Up
+  k up       ;; Стрелка вверх
+  h left     ;; Стрелка влево
+  j down     ;; Стрелка вниз
+  l rght     ;; Стрелка вправо
+
+  , C-S-tab  ;; Переключение на предыдущую вкладку
+  m C-tab    ;; Переключение на следующую вкладку
+)
