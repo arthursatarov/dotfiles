@@ -171,12 +171,17 @@ window_rules:
   # Docs workspace
   - commands: ["move --workspace 5"]
     match:
-      - window_process: { regex: "Obsidian" }
+      - window_process: { regex: "Obsidian|wps" }
 
   # Chats workspace
   - commands: ["move --workspace 6"]
     match:
       - window_process: { regex: "Telegram|Discord|Zoom" }
+
+  # Tasks workspace
+  - commands: ["move --workspace 7"]
+    match:
+      - window_process: { regex: "TogglTrack" }
 
   # CLI workspace
   - commands: ["move --workspace 8"]
@@ -186,11 +191,11 @@ window_rules:
   # Music workspace
   - commands: ["move --workspace 9"]
     match:
-      - window_process: { regex: "Spotify" }
+      - window_process: { regex: "Spotify|vlc" }
 
   - commands: ["set-floating"]
     match:
-      - window_process: { regex: "fdm|TogglTrack" }
+      - window_process: { regex: "fdm" }
 
   - commands: ["ignore"]
     match:
