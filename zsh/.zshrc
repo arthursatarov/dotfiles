@@ -90,7 +90,27 @@ export PATH="$HOME/.local/bin:$PATH"
 ########################################
 # Aliases
 ########################################
+alias c="clear"
+alias cl="clear"
+alias clr="clear"
+
 alias ls='eza --icons --group-directories-first'
 alias la='eza --icons -a --group-directories-first'
 alias ll='eza -la --icons'
 
+alias vi='nvim'
+alias vim='nvim'
+alias lzg='lazygit'
+
+alias dco="docker-compose"  	           
+alias dcrestart="docker-compose restart"
+alias dcstop="docker-compose stop"      
+alias dcupd="docker-compose up -d"       
+alias dcdn="docker-compose down"        
+
+alias ta="tmux attach -t"           # Attach tmux to already running named session
+alias tad="tmux attach -d -t"       # Detach named tmux session
+alias ts="tmux new-session -s"      # Create a new named tmux session
+alias tl="tmux list-sessions"       # Displays a list of running tmux sessions
+alias tksv="tmux kill-server"       # Terminate all running tmux sessions
+alias tkss="tmux kill-session -t"   # Terminate named running tmux session
