@@ -43,7 +43,9 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+y'    -Function Redo
 $ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
 $ENV:STARSHIP_CACHE = "$HOME\AppData\Local\Temp"
 
-Invoke-Expression (&starship init powershell)
+# Invoke-Expression (&starship init powershell)
+
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/1_shell.omp.json" | Invoke-Expression
 
 # ===============================
 # Additional Tools
