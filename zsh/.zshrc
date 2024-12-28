@@ -74,7 +74,8 @@ zstyle ':fzf-tab:*' fzf-bindings 'ctrl-y:accept'
 ########################################
 source <(fzf --zsh)
 
-eval "$(starship init zsh)"
+#eval "$(starship init zsh)"
+eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/emodipt-extend.omp.json)"
 eval "$(zoxide init --cmd cd zsh)"
 
 if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
@@ -114,3 +115,10 @@ alias ts="tmux new-session -s"      # Create a new named tmux session
 alias tl="tmux list-sessions"       # Displays a list of running tmux sessions
 alias tksv="tmux kill-server"       # Terminate all running tmux sessions
 alias tkss="tmux kill-session -t"   # Terminate named running tmux session
+
+########################################
+# NVM
+########################################
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
