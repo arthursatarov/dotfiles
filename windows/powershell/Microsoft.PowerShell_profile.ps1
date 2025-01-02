@@ -45,7 +45,7 @@ $ENV:STARSHIP_CACHE = "$HOME\AppData\Local\Temp"
 
 # Invoke-Expression (&starship init powershell)
 
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/emodipt-extend.omp.json" | Invoke-Expression
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/spaceship.omp.json" | Invoke-Expression
 
 # ===============================
 # Additional Tools
