@@ -196,6 +196,7 @@ window_rules:
   - commands: ["set-floating"]
     match:
       - window_process: { regex: "fdm" }
+      - window_process: { regex: "explorer" }
 
   - commands: ["ignore"]
     match:
