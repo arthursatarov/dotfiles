@@ -27,6 +27,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light akash329d/zsh-alias-finder
 
 ########################################
 # Keybindings
@@ -73,71 +74,22 @@ if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
+# FZF
 source <(fzf --zsh)
+
+# Oh My POSH
 eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/emodipt-extend.omp.json)"
+
+# Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
 ########################################
 # Aliases
 ########################################
-alias c="clear"
-alias cl="clear"
-alias clr="clear"
 
-alias ls='eza --icons --group-directories-first'
-alias la='eza --icons -a --group-directories-first'
-alias ll='eza -la --icons'
-
-alias vi='nvim'
-alias vim='nvim'
-alias lzg='lazygit'
-
-# Tmux
-alias ta="tmux attach -t"           # Attach tmux to already running named session
-alias tad="tmux attach -d -t"       # Detach named tmux session
-alias ts="tmux new-session -s"      # Create a new named tmux session
-alias tl="tmux list-sessions"       # Displays a list of running tmux sessions
-alias tksv="tmux kill-server"       # Terminate all running tmux sessions
-alias tkss="tmux kill-session -t"   # Terminate named running tmux session
-
-# Docker Compose
-alias dco="docker-compose"  	           
-alias dcb="docker-compose build"  	           
-alias dce="docker-compose exec"  	           
-alias dcps="docker-compose ps"  	           
-alias dcrestart="docker-compose restart"  	           
-alias dcrm="docker-compose rm"      
-alias dcr="docker-compose run"      
-alias dcR="docker-compose run --rm"      
-alias dcstop="docker-compose stop"      
-alias dcup="docker-compose up"       
-alias dcupd="docker-compose up -d"       
-alias dcupdb="docker-compose up -d --build"       
-alias dcdn="docker-compose down"        
-alias dcl="docker-compose logs"        
-alias dclf="docker-compose logs -f"        
-alias dclF="docker-compose logs -f --tail0"        
-alias dcpull="docker-compose pull"        
-alias dcstart="docker-compose start"        
-alias dck="docker-compose kill"        
-
-# Composer
-alias ccp='composer create-project'
-alias cdo='composer dump-autoload -o'
-alias cdu='composer dump-autoload'
-alias cget='curl -s https://getcomposer.org/installer | php'
-alias cgr='composer global require'
-alias cgrm='composer global remove'
-alias cgu='composer global update'
-alias ci='composer install'
-alias co='composer outdated'
-alias cod='composer outdated --direct'
-alias cr='composer require'
-alias crm='composer remove'
-alias cs='composer show'
-alias csu='composer self-update'
-alias cu='composer update'
-alias cuh='composer update --working-dir=$(composer config -g home)'
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
 
 ########################################
 # NVM
