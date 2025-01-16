@@ -20,7 +20,6 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-patch-dl \
   zdharma-continuum/zinit-annex-rust
 
-
 ########################################
 # ZSH Plugins
 ########################################
@@ -29,14 +28,12 @@ zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 
-
 ########################################
 # Keybindings
 ########################################
 bindkey -e
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-
 
 ########################################
 # ZSH History
@@ -54,7 +51,6 @@ setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
 
-
 ########################################
 # Completion Setup
 ########################################
@@ -68,25 +64,18 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
 zstyle ':fzf-tab:*' fzf-preview 'bat --color=always $realpath || cat $realpath'
 zstyle ':fzf-tab:*' fzf-bindings 'ctrl-y:accept'
 
-
 ########################################
 # Shell Integrations
 ########################################
-source <(fzf --zsh)
 
-#eval "$(starship init zsh)"
-eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/emodipt-extend.omp.json)"
-eval "$(zoxide init --cmd cd zsh)"
-
+# Homebrew
 if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
   eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 fi
 
-
-########################################
-# Environment Variables
-########################################
-export PATH="$HOME/.local/bin:$PATH"
+source <(fzf --zsh)
+eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/emodipt-extend.omp.json)"
+eval "$(zoxide init --cmd cd zsh)"
 
 ########################################
 # Aliases

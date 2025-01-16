@@ -19,7 +19,7 @@
 
 ;; Шаблон для переключения слоёв через тройное нажатие
 (deftemplate triple-tap-layer-switch (key layer-name)
-  $key (tap-dance $tt (
+  $key (tap-dance 200 (
     $key                          ;; Одинарное нажатие — обычный ввод символа
     (macro $key $key)             ;; Двойное нажатие — двойной символ
     (layer-switch $layer-name)    ;; Тройное нажатие — переключение слоя
@@ -32,14 +32,14 @@
   caps (tap-hold $tt $ht esc lctl)
 
   ;; Клавиши с модификаторами
-  a (tap-hold-release $tt $ht a lsft)   ;; Shift на удержании
-  s (tap-hold-release $tt $ht s lctl)   ;; Ctrl на удержании
-  d (tap-hold-release $tt $ht d lmet)   ;; Meta (Alt) на удержании
-  f (tap-hold-release $tt $ht f lalt)   ;; Alt на удержании
+  a (tap-hold-release $tt $ht a lsft) 
+  s (tap-hold-release $tt $ht s lctl) 
+  d (tap-hold-release $tt $ht d lmet) 
+  f (tap-hold-release $tt $ht f lalt) 
   j (tap-hold-release $tt $ht j lalt)
   k (tap-hold-release $tt $ht k lmet)
   l (tap-hold-release $tt $ht l lctl)
-  ; (tap-hold-release $tt $ht ; rsft)    ;; Правая клавиша Shift на удержании
+  ; (tap-hold-release $tt $ht ; rsft) 
 
   ;; Тройное нажатие для переключения в прозрачный слой
   (template-expand triple-tap-layer-switch grv transparent)

@@ -1,6 +1,7 @@
 # ===============================
 # Module Installation and Import
 # ===============================
+
 # Ensure Terminal-Icons module is installed before importing
 if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
   Install-Module -Name Terminal-Icons -Scope CurrentUser -Force -SkipPublisherCheck
@@ -11,6 +12,7 @@ Import-Module -Name Terminal-Icons
 # ===============================
 # PSReadLine Configuration
 # ===============================
+
 # Configure PSReadLine options for enhanced terminal experience
 $PSReadLineOptions = @{
   EditMode                      = 'Windows'
@@ -39,24 +41,17 @@ Set-PSReadLineKeyHandler -Chord 'Ctrl+y'    -Function Redo
 # ===============================
 # Prompt and Shell Enhancements
 # ===============================
-# Configure Starship prompt
-$ENV:STARSHIP_CONFIG = "$HOME\.config\starship.toml"
-$ENV:STARSHIP_CACHE = "$HOME\AppData\Local\Temp"
 
-# Invoke-Expression (&starship init powershell)
-
-oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/spaceship.omp.json" | Invoke-Expression
+# Oh My POSH
+oh-my-posh init pwsh --config "$env:POSH_THEMES_PATH/emodipt-extend.omp.json" | Invoke-Expression
 
 # ===============================
 # Additional Tools
 # ===============================
+
 # Initialize Zoxide (smart directory changer)
 Invoke-Expression (& { (zoxide init powershell | Out-String) })
 
 # ===============================
 # Custom Functions
 # ===============================
-# Function to quickly update PowerShell profile
-function Update-Profile {
-  & $profile
-}
