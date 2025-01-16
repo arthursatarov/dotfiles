@@ -166,12 +166,12 @@ window_rules:
   # Tasks workspace
   - commands: ["move --workspace 4"]
     match:
-      - window_process: { regex: "Notion|Notion Calendar" }
+      - window_process: { regex: "Notion|Notion Calendar|Obsidian" }
 
   # Docs workspace
   - commands: ["move --workspace 5"]
     match:
-      - window_process: { regex: "Obsidian|wps" }
+      - window_process: { regex: "wps" }
 
   # Chats workspace
   - commands: ["move --workspace 6"]
