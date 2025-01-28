@@ -2,12 +2,17 @@
 # Module Installation and Import
 # ===============================
 
-# Ensure Terminal-Icons module is installed before importing
+# Ensure Terminal-Icons and PSFzf modules are installed before importing
 if (-not (Get-Module -ListAvailable -Name Terminal-Icons)) {
   Install-Module -Name Terminal-Icons -Scope CurrentUser -Force -SkipPublisherCheck
 }
 
+if (-not (Get-Module -ListAvailable -Name PSFzf)) {
+    Install-Module -Name PSFzf -Scope CurrentUser -Force -SkipPublisherCheck
+}
+
 Import-Module -Name Terminal-Icons
+Import-Module -Name PSFzf
 
 # ===============================
 # PSReadLine Configuration
@@ -25,6 +30,9 @@ $PSReadLineOptions = @{
 }
 
 Set-PSReadLineOption @PSReadLineOptions
+
+# PSFzf config
+Set-PsFzfOption -PSReadlineChordProvider 'Ctrl+t' -PSReadlineChordReverseHistory 'Ctrl+r'
 
 # Configure custom key bindings
 Set-PSReadLineKeyHandler -Key UpArrow       -Function HistorySearchBackward
