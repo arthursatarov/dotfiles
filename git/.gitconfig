@@ -16,3 +16,8 @@
 [push]
   default = current       # Make `git push` automatically push relevant
   followTags = true       # Make `git push` push relevant annotated tags when pushing branches out
+# [filter "lfs"]
+#	process = git-lfs filter-process
+#	required = true
+#	clean = git-lfs clean -- %f
+#	smudge = git-lfs smudge -- %f
