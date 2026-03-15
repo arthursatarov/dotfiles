@@ -83,6 +83,20 @@ eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/emodipt-
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
 
+# Ngrok
+if command -v ngrok &>/dev/null; then
+  eval "$(ngrok completion)"
+fi
+
+# Yazi
+function y() {
+	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
+	yazi "$@" --cwd-file="$tmp"
+	IFS= read -r -d '' cwd < "$tmp"
+	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
+	rm -f -- "$tmp"
+}
+
 ########################################
 # Aliases
 ########################################
