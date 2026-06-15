@@ -164,11 +164,18 @@ on-mode-changed = []
 # 'apps' binding mode declaration.
 # See: https://nikitabobko.github.io/AeroSpace/guide#binding-modes
 [mode.apps.binding]
-	b = ['exec-and-forget open -a /Applications/Zen.app', 'mode main']
-	n = ['exec-and-forget open -a /Applications/Obsidian.app', 'mode main']
-	c = ['exec-and-forget open -a /Applications/Claude.app', 'mode main']
-	f = ['exec-and-forget open -a /Applications/Figma.app', 'mode main']
-	o = ['exec-and-forget open -a /System/Library/CoreServices/Finder.app', 'mode main']
+	f = ['exec-and-forget open -a /Applications/Zen.app', 'mode main']
+	d = ['exec-and-forget open -a /Applications/Claude.app', 'mode main']
+	s = ['exec-and-forget open -a /Applications/Obsidian.app', 'mode main']
+	# a = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+	h = ['exec-and-forget open -a /Applications/Figma.app', 'mode main']
+	j = ['exec-and-forget open -a /Applications/Visual\ Studio\ Code.app', 'mode main']
+	# k = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+	# l = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+	m = ['exec-and-forget open -a /Applications/Spotify.app', 'mode main']
+	t = ['exec-and-forget open -a /Applications/Telegram.app', 'mode main']
+  o = ['exec-and-forget open -a /System/Library/CoreServices/Finder.app', 'mode main']
+  p = ['exec-and-forget open -a /Applications/Session.app', 'mode main']
 
 	esc   = 'mode main'
 	enter = 'mode main'
@@ -248,4 +255,28 @@ on-mode-changed = []
 
 [[on-window-detected]]
   if.app-id = 'com.googlecode.iterm2'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'ru.keepcoder.Telegram'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.mail'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.philipyoungg.session-direct'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.iCal'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.AppStore'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.superduper.superwhisper'
   run = 'layout floating'
