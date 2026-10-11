@@ -50,3 +50,4 @@ desktop.ini
 .iml
 *.sublime-workspace
 *.code-workspace
+**/.claude/settings.local.json
