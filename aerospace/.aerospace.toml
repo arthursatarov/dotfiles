@@ -6,8 +6,8 @@
 config-version = 2
 
 # Startup
-after-startup-command = []
 start-at-login = true
+after-startup-command = []
 
 # Windows Management
 
@@ -210,6 +210,23 @@ on-mode-changed = []
 [[on-window-detected]]
   if.app-id = 'us.zoom.xos'
   run = 'move-node-to-workspace 6'
+
+# Workspace 7
+[[on-window-detected]]
+  if.app-id = 'com.microsoft.Word'
+  run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+  if.app-id = 'com.microsoft.Excel'
+  run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+  if.app-id = 'com.microsoft.Powerpoint'
+  run = 'move-node-to-workspace 7'
+
+[[on-window-detected]]
+  if.app-id = 'com.pdfeditor.pdfeditormac'
+  run = 'move-node-to-workspace 7'
 
 # Workspace 9
 [[on-window-detected]]
