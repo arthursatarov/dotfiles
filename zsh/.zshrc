@@ -112,6 +112,9 @@ autoload -Uz add-zsh-hook
 add-zsh-hook chpwd _php_version_use
 _php_version_use
 
+# direnv: per-project env from .envrc
+eval "$(direnv hook zsh)"
+
 # Ngrok
 if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
