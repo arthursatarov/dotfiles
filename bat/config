@@ -1,0 +1,4 @@
+# Follow the macOS appearance, same as Ghostty
+--theme=auto:system
+--theme-dark="rose-pine"
+--theme-light="rose-pine-dawn"

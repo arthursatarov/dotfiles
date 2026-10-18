@@ -26,7 +26,7 @@ require("lazy").setup({
     lazy = true, -- plugins are lazy-loaded unless a spec says otherwise
     version = false, -- always use the latest git commit unless a spec pins a version
   },
-  install = { colorscheme = { "tokyonight", "habamax" } },
+  install = { colorscheme = { "rose-pine", "habamax" } },
   checker = { enabled = false }, -- run :Lazy update manually when you want to
   change_detection = { notify = false },
   ui = { border = "rounded" },

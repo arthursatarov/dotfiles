@@ -3,16 +3,18 @@
 return {
   -- Colorscheme --------------------------------------------------------------
   {
-    "folke/tokyonight.nvim",
+    "rose-pine/neovim",
+    name = "rose-pine",
     lazy = false, -- load at startup so the theme is ready before anything draws
     priority = 1000,
     opts = {
-      style = "night", -- "storm" | "moon" | "night" | "day"
-      styles = { sidebars = "dark", floats = "dark" },
+      variant = "auto", -- follows 'background': main when dark, dawn when light
+      dark_variant = "main",
+      styles = { transparency = true }, -- let Ghostty's opacity/blur show through
     },
     config = function(_, opts)
-      require("tokyonight").setup(opts)
-      vim.cmd.colorscheme("tokyonight")
+      require("rose-pine").setup(opts)
+      vim.cmd.colorscheme("rose-pine")
     end,
   },
 

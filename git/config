@@ -54,6 +54,7 @@
 
 [delta]
   navigate = true
+  syntax-theme = rose-pine
   line-numbers = true
 
 [filter "lfs"]
