@@ -5,6 +5,7 @@
 ```sh
 git clone <repo> ~/.dotfiles
 cd ~/.dotfiles && stow .
+brew bundle            # пакеты и приложения из Brewfile
 echo 'export ZDOTDIR="$HOME/.config/zsh"' > ~/.zshenv
 ```
 
