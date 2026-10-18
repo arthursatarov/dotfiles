@@ -83,7 +83,7 @@ setopt hist_find_no_dups
 source <(fzf --zsh)
 
 # Oh My POSH
-eval "$(oh-my-posh init zsh --config $HOMEBREW_PREFIX/opt/oh-my-posh/themes/emodipt-extend.omp.json)"
+eval "$(oh-my-posh init zsh --config ~/.config/oh-my-posh/rose-pine.omp.json)"
 
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
