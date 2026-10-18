@@ -72,6 +72,9 @@ on-mode-changed = []
   alt-e = 'layout tiles vertical'
   alt-shift-space = 'layout floating tiling'
 
+  # Windows
+  alt-shift-q = 'close'
+
   # Workspaces
   alt-1 = 'workspace 1'
   alt-2 = 'workspace 2'
@@ -108,7 +111,7 @@ on-mode-changed = []
   alt-ctrl-shift-l = 'move-workspace-to-monitor --wrap-around right'
 
   # Resize
-	alt-r = 'mode resize'
+  alt-r = 'mode resize'
   alt-minus = 'resize smart -50'
   alt-equal = 'resize smart +50'
 
@@ -118,64 +121,75 @@ on-mode-changed = []
   alt-shift-semicolon = 'mode service'
 
   # Modes
-	alt-a = 'mode apps'
+  alt-a = 'mode apps'
+
+  # Terminal
+  alt-enter = ['workspace 4', 'exec-and-forget open -a /Applications/Ghostty.app']
 
 ########################################
 ### App Mode
 ########################################
 [mode.apps.binding]
-	# f = ['exec-and-forget open -a /Applications/Zen.app', 'mode main']
-	# d = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-	# s = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-	# a = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-	# h = ['exec-and-forget open -a /Applications/Figma.app', 'mode main']
-	# j = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-	# k = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-	# l = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+  # f = ['exec-and-forget open -a /Applications/Zen.app', 'mode main']
+  # d = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+  # s = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+  # a = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+  # h = ['exec-and-forget open -a /Applications/Figma.app', 'mode main']
+  # j = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+  # k = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
+  # l = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
 
-	t = ['exec-and-forget open -a /Applications/Telegram.app', 'mode main']
+  g = ['exec-and-forget open -a /Applications/Ghostty.app', 'mode main']
+  t = ['exec-and-forget open -a /Applications/Telegram.app', 'mode main']
   o = ['exec-and-forget open -a /System/Library/CoreServices/Finder.app', 'mode main']
   p = ['exec-and-forget open -a /Applications/Session.app', 'mode main']
-	m = ['exec-and-forget open -a /Applications/Spotify.app', 'mode main']
+  m = ['exec-and-forget open -a /Applications/Spotify.app', 'mode main']
 
-	esc   = 'mode main'
-	enter = 'mode main'
+  esc   = 'mode main'
+  enter = 'mode main'
 
 ########################################
 ### Resize Mode
 ########################################
 [mode.resize.binding]
-	h = 'resize width -50'
-	l = 'resize width +50'
-	j = 'resize height +50'
-	k = 'resize height -50'
+  h = 'resize width -50'
+  l = 'resize width +50'
+  j = 'resize height +50'
+  k = 'resize height -50'
 
-	# Fine-grained 
-	shift-h = 'resize width -10'
-	shift-l = 'resize width +10'
-	shift-j = 'resize height +10'
-	shift-k = 'resize height -10'
+  # Fine-grained
+  shift-h = 'resize width -10'
+  shift-l = 'resize width +10'
+  shift-j = 'resize height +10'
+  shift-k = 'resize height -10'
 
-	esc   = 'mode main'
-	enter = 'mode main'
+  esc   = 'mode main'
+  enter = 'mode main'
 
 ########################################
 ### Service Mode
 ########################################
 [mode.service.binding]
-	esc = ['reload-config', 'mode main']
-	r = ['flatten-workspace-tree', 'mode main'] 
-	f = ['layout floating tiling', 'mode main'] 
-	backspace = ['close-all-windows-but-current', 'mode main']
+  esc = ['reload-config', 'mode main']
+  r = ['flatten-workspace-tree', 'mode main']
+  b = ['balance-sizes', 'mode main']
+  f = ['layout floating tiling', 'mode main']
+  backspace = ['close-all-windows-but-current', 'mode main']
 
-	alt-shift-h = ['join-with left', 'mode main']
-	alt-shift-j = ['join-with down', 'mode main']
-	alt-shift-k = ['join-with up', 'mode main']
-	alt-shift-l = ['join-with right', 'mode main']
+  alt-shift-h = ['join-with left', 'mode main']
+  alt-shift-j = ['join-with down', 'mode main']
+  alt-shift-k = ['join-with up', 'mode main']
+  alt-shift-l = ['join-with right', 'mode main']
 
 ########################################
 ### Window Rules: Workspaces
 ########################################
+
+# Only the first matching rule runs, so exceptions go before app-wide rules
+[[on-window-detected]]
+  if.app-id = 'app.zen-browser.zen'
+  if.window-title-regex-substring = 'Picture-in-Picture'
+  run = 'layout floating'
 
 # Workspace 1
 [[on-window-detected]]
@@ -194,39 +208,44 @@ on-mode-changed = []
 
 # Workspace 4
 [[on-window-detected]]
-  if.app-id = 'notion.id'
+  if.app-id = 'com.mitchellh.ghostty'
   run = 'move-node-to-workspace 4'
 
 # Workspace 5
 [[on-window-detected]]
-  if.app-id = 'ru.keepcoder.Telegram'
-  run = 'move-node-to-workspace 5'
-
-[[on-window-detected]]
-  if.app-id = 'com.apple.mail'
+  if.app-id = 'notion.id'
   run = 'move-node-to-workspace 5'
 
 # Workspace 6
 [[on-window-detected]]
-  if.app-id = 'us.zoom.xos'
+  if.app-id = 'ru.keepcoder.Telegram'
+  run = 'move-node-to-workspace 6'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.mail'
   run = 'move-node-to-workspace 6'
 
 # Workspace 7
 [[on-window-detected]]
-  if.app-id = 'com.microsoft.Word'
+  if.app-id = 'us.zoom.xos'
   run = 'move-node-to-workspace 7'
+
+# Workspace 8
+[[on-window-detected]]
+  if.app-id = 'com.microsoft.Word'
+  run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
   if.app-id = 'com.microsoft.Excel'
-  run = 'move-node-to-workspace 7'
+  run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
   if.app-id = 'com.microsoft.Powerpoint'
-  run = 'move-node-to-workspace 7'
+  run = 'move-node-to-workspace 8'
 
 [[on-window-detected]]
   if.app-id = 'com.pdfeditor.pdfeditormac'
-  run = 'move-node-to-workspace 7'
+  run = 'move-node-to-workspace 8'
 
 # Workspace 9
 [[on-window-detected]]
@@ -238,20 +257,11 @@ on-mode-changed = []
 ########################################
 
 [[on-window-detected]]
-  if.app-id = 'app.zen-browser.zen'
-  if.window-title-regex-substring = 'Picture-in-Picture'
-  run = 'layout floating'
-
-[[on-window-detected]]
   if.app-id = 'com.apple.finder'
   run = 'layout floating'
 
 [[on-window-detected]]
   if.app-id = 'com.apple.Preview'
-  run = 'layout floating'
-
-[[on-window-detected]]
-  if.app-id = 'com.googlecode.iterm2'
   run = 'layout floating'
 
 [[on-window-detected]]
