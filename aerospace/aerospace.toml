@@ -23,8 +23,8 @@ default-root-container-orientation = 'auto'
 # Keep cmd-h hidden windows visible to AeroSpace
 automatically-unhide-macos-hidden-apps = true
 
-# Keep numbered workspaces present even when empty
-persistent-workspaces = ["1", "2", "3", "4", "5", "6", "7", "8", "9"]
+# Keep workspaces present even when empty
+persistent-workspaces = ["web", "notes", "docs", "chat", "design", "code", "term", "ai"]
 
 # Mouse follows the focused monitor
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -76,24 +76,24 @@ on-mode-changed = []
   alt-shift-q = 'close'
 
   # Workspaces
-  alt-1 = 'workspace 1'
-  alt-2 = 'workspace 2'
-  alt-3 = 'workspace 3'
-  alt-4 = 'workspace 4'
-  alt-5 = 'workspace 5'
-  alt-6 = 'workspace 6'
-  alt-7 = 'workspace 7'
-  alt-8 = 'workspace 8'
+  alt-1 = 'workspace web'
+  alt-2 = 'workspace notes'
+  alt-3 = 'workspace docs'
+  alt-4 = 'workspace chat'
+  alt-5 = 'workspace design'
+  alt-6 = 'workspace code'
+  alt-7 = 'workspace term'
+  alt-8 = 'workspace ai'
   alt-9 = 'workspace 9'
 
-  alt-shift-1 = 'move-node-to-workspace 1'
-  alt-shift-2 = 'move-node-to-workspace 2'
-  alt-shift-3 = 'move-node-to-workspace 3'
-  alt-shift-4 = 'move-node-to-workspace 4'
-  alt-shift-5 = 'move-node-to-workspace 5'
-  alt-shift-6 = 'move-node-to-workspace 6'
-  alt-shift-7 = 'move-node-to-workspace 7'
-  alt-shift-8 = 'move-node-to-workspace 8'
+  alt-shift-1 = 'move-node-to-workspace web'
+  alt-shift-2 = 'move-node-to-workspace notes'
+  alt-shift-3 = 'move-node-to-workspace docs'
+  alt-shift-4 = 'move-node-to-workspace chat'
+  alt-shift-5 = 'move-node-to-workspace design'
+  alt-shift-6 = 'move-node-to-workspace code'
+  alt-shift-7 = 'move-node-to-workspace term'
+  alt-shift-8 = 'move-node-to-workspace ai'
   alt-shift-9 = 'move-node-to-workspace 9'
 
   alt-tab = 'workspace-back-and-forth'
@@ -124,26 +124,20 @@ on-mode-changed = []
   alt-a = 'mode apps'
 
   # Terminal
-  alt-enter = ['workspace 4', 'exec-and-forget open -a /Applications/Ghostty.app']
+  alt-enter = ['workspace term', 'exec-and-forget open -a /Applications/Ghostty.app']
 
 ########################################
 ### App Mode
 ########################################
 [mode.apps.binding]
-  # f = ['exec-and-forget open -a /Applications/Zen.app', 'mode main']
-  # d = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-  # s = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-  # a = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-  # h = ['exec-and-forget open -a /Applications/Figma.app', 'mode main']
-  # j = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-  # k = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-  # l = ['exec-and-forget open -a /Applications/AppName.app', 'mode main']
-
-  g = ['exec-and-forget open -a /Applications/Ghostty.app', 'mode main']
-  t = ['exec-and-forget open -a /Applications/Telegram.app', 'mode main']
-  o = ['exec-and-forget open -a /System/Library/CoreServices/Finder.app', 'mode main']
-  p = ['exec-and-forget open -a /Applications/Session.app', 'mode main']
-  m = ['exec-and-forget open -a /Applications/Spotify.app', 'mode main']
+  b = ['exec-and-forget open -a "/Applications/Zen.app"', 'mode main']
+  n = ['exec-and-forget open -a "/Applications/Notion.app"', 'mode main']
+  o = ['exec-and-forget open -a "/Applications/Obsidian.app"', 'mode main']
+  t = ['exec-and-forget open -a "/Applications/Ghostty.app"', 'mode main']
+  c = ['exec-and-forget open -a "/Applications/Visual Studio Code.app"', 'mode main']
+  f = ['exec-and-forget open -a "/Applications/Figma.app"', 'mode main']
+  m = ['exec-and-forget open -a "/Applications/Telegram.app"', 'mode main']
+  d = ['exec-and-forget open -a /System/Library/CoreServices/Finder.app', 'mode main']
 
   esc   = 'mode main'
   enter = 'mode main'
@@ -191,70 +185,101 @@ on-mode-changed = []
   if.window-title-regex-substring = 'Picture-in-Picture'
   run = 'layout floating'
 
-# Workspace 1
+# web (alt-1)
 [[on-window-detected]]
   if.app-id = 'app.zen-browser.zen'
-  run = 'move-node-to-workspace 1'
+  run = 'move-node-to-workspace web'
 
-# Workspace 2
-[[on-window-detected]]
-  if.app-id = 'com.figma.Desktop'
-  run = 'move-node-to-workspace 2'
-
-# Workspace 3
-[[on-window-detected]]
-  if.app-id = 'com.microsoft.VSCode'
-  run = 'move-node-to-workspace 3'
-
-# Workspace 4
-[[on-window-detected]]
-  if.app-id = 'com.mitchellh.ghostty'
-  run = 'move-node-to-workspace 4'
-
-# Workspace 5
+# notes (alt-2)
 [[on-window-detected]]
   if.app-id = 'notion.id'
-  run = 'move-node-to-workspace 5'
-
-# Workspace 6
-[[on-window-detected]]
-  if.app-id = 'ru.keepcoder.Telegram'
-  run = 'move-node-to-workspace 6'
+  run = 'move-node-to-workspace notes'
 
 [[on-window-detected]]
-  if.app-id = 'com.apple.mail'
-  run = 'move-node-to-workspace 6'
+  if.app-id = 'md.obsidian'
+  run = 'move-node-to-workspace notes'
 
-# Workspace 7
-[[on-window-detected]]
-  if.app-id = 'us.zoom.xos'
-  run = 'move-node-to-workspace 7'
-
-# Workspace 8
+# docs (alt-3)
 [[on-window-detected]]
   if.app-id = 'com.microsoft.Word'
-  run = 'move-node-to-workspace 8'
+  run = 'move-node-to-workspace docs'
 
 [[on-window-detected]]
   if.app-id = 'com.microsoft.Excel'
-  run = 'move-node-to-workspace 8'
+  run = 'move-node-to-workspace docs'
 
 [[on-window-detected]]
   if.app-id = 'com.microsoft.Powerpoint'
-  run = 'move-node-to-workspace 8'
+  run = 'move-node-to-workspace docs'
 
 [[on-window-detected]]
   if.app-id = 'com.pdfeditor.pdfeditormac'
-  run = 'move-node-to-workspace 8'
+  run = 'move-node-to-workspace docs'
 
-# Workspace 9
+# chat (alt-4)
 [[on-window-detected]]
-  if.app-id = 'com.spotify.client'
-  run = 'move-node-to-workspace 9'
+  if.app-id = 'ru.keepcoder.Telegram'
+  run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.mail'
+  run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+  if.app-id = 'us.zoom.xos'
+  run = 'move-node-to-workspace chat'
+
+[[on-window-detected]]
+  if.app-id = 'com.hnc.Discord'
+  run = 'move-node-to-workspace chat'
+
+# design (alt-5)
+[[on-window-detected]]
+  if.app-id = 'com.figma.Desktop'
+  run = 'move-node-to-workspace design'
+
+[[on-window-detected]]
+  if.app-id = 'com.canva.affinity'
+  run = 'move-node-to-workspace design'
+
+[[on-window-detected]]
+  if.app-id = 'tw.ogdesign.eagle'
+  run = ['layout floating', 'move-node-to-workspace design']
+
+[[on-window-detected]]
+  if.app-id = 'com.dominiklevitsky.fontbase'
+  run = ['layout floating', 'move-node-to-workspace design']
+
+# code (alt-6)
+[[on-window-detected]]
+  if.app-id = 'com.microsoft.VSCode'
+  run = 'move-node-to-workspace code'
+
+[[on-window-detected]]
+  if.app-id = 'com.postmanlabs.mac'
+  run = 'move-node-to-workspace code'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.dt.Xcode'
+  run = 'move-node-to-workspace code'
+
+# term (alt-7)
+[[on-window-detected]]
+  if.app-id = 'com.mitchellh.ghostty'
+  run = 'move-node-to-workspace term'
+
+# ai (alt-8)
+[[on-window-detected]]
+  if.app-id = 'com.anthropic.claudefordesktop'
+  run = 'move-node-to-workspace ai'
 
 ########################################
 ### Window Rules: Floating
 ########################################
+
+[[on-window-detected]]
+  if.app-id = 'com.spotify.client'
+  run = 'layout floating'
 
 [[on-window-detected]]
   if.app-id = 'com.apple.finder'
@@ -285,10 +310,6 @@ on-mode-changed = []
   run = 'layout floating'
 
 [[on-window-detected]]
-  if.app-id = 'tw.ogdesign.eagle'
-  run = 'layout floating'
-
-[[on-window-detected]]
   if.app-id = 'ch.sudo.cyberduck'
   run = 'layout floating'
 
@@ -306,4 +327,40 @@ on-mode-changed = []
 
 [[on-window-detected]]
   if.app-id = 'studio.5km.zipic'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.cron.electron'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.systempreferences'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.calculator'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.ActivityMonitor'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.QuickTimePlayerX'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'org.videolan.vlc'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.ScreenContinuity'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.philandro.anydesk'
+  run = 'layout floating'
+
+[[on-window-detected]]
+  if.app-id = 'com.apple.MobileSMS'
   run = 'layout floating'
