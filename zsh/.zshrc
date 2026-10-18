@@ -21,13 +21,39 @@ zinit light-mode for \
   zdharma-continuum/zinit-annex-rust
 
 ########################################
+# Completion Setup
+########################################
+zinit light zsh-users/zsh-completions
+
+# Docker CLI completions
+fpath=($HOME/.docker/completions $fpath)
+
+# Rebuild the completion dump once a day, otherwise load it from cache
+autoload -Uz compinit
+_stale_dump=($ZDOTDIR/.zcompdump(N.mh+24))
+if (( $#_stale_dump )); then
+  compinit
+else
+  compinit -C
+fi
+unset _stale_dump
+
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
+zstyle ':completion:*' menu no
+zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza -1 --color=always $realpath'
+zstyle ':fzf-tab:*' fzf-preview 'bat --color=always $realpath || cat $realpath'
+zstyle ':fzf-tab:*' fzf-bindings 'ctrl-y:accept'
+
+########################################
 # ZSH Plugins
 ########################################
-zinit light zsh-users/zsh-syntax-highlighting
-zinit light zsh-users/zsh-completions
-zinit light zsh-users/zsh-autosuggestions
+# fzf-tab goes after compinit, syntax-highlighting goes last
 zinit light Aloxaf/fzf-tab
 zinit light akash329d/zsh-alias-finder
+zinit light zsh-users/zsh-autosuggestions
+zinit light zsh-users/zsh-syntax-highlighting
 
 ########################################
 # Keybindings
@@ -39,62 +65,42 @@ bindkey '^n' history-search-forward
 ########################################
 # ZSH History
 ########################################
-HISTSIZE=10000
-SAVEHIST=10000
+HISTSIZE=100000
+SAVEHIST=100000
 HISTFILE=~/.zsh_history
-HISTDUP=erase
 
-setopt appendhistory
 setopt sharehistory
 setopt hist_ignore_space
 setopt hist_ignore_all_dups
 setopt hist_save_no_dups
-setopt hist_ignore_dups
 setopt hist_find_no_dups
-
-########################################
-# Completion Setup
-########################################
-autoload -U compinit && compinit -u
-
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
-zstyle ':completion:*' list-colors "${(s.:.)LS_COLORS}"
-zstyle ':completion:*' menu no
-zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza -1 --color=always $realpath'
-zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'ls --color $realpath'
-zstyle ':fzf-tab:*' fzf-preview 'bat --color=always $realpath || cat $realpath'
-zstyle ':fzf-tab:*' fzf-bindings 'ctrl-y:accept'
 
 ########################################
 # Shell Integrations
 ########################################
 
-# Homebrew
-if [[ -x /home/linuxbrew/.linuxbrew/bin/brew ]]; then
-  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
-fi
-
 # FZF
 source <(fzf --zsh)
 
 # Oh My POSH
-eval "$(oh-my-posh init zsh --config $(brew --prefix oh-my-posh)/themes/emodipt-extend.omp.json)"
+eval "$(oh-my-posh init zsh --config $HOMEBREW_PREFIX/opt/oh-my-posh/themes/emodipt-extend.omp.json)"
 
 # Zoxide
 eval "$(zoxide init --cmd cd zsh)"
+
+# fnm (Node version manager, switches on .nvmrc / .node-version)
+eval "$(fnm env --use-on-cd --shell zsh)"
 
 # Ngrok
 if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
 fi
 
-# Yazi
-function y() {
-	local tmp="$(mktemp -t "yazi-cwd.XXXXXX")" cwd
-	yazi "$@" --cwd-file="$tmp"
-	IFS= read -r -d '' cwd < "$tmp"
-	[ -n "$cwd" ] && [ "$cwd" != "$PWD" ] && builtin cd -- "$cwd"
-	rm -f -- "$tmp"
+# Superfile: cd into the last directory on quit
+function spf() {
+  export SPF_LAST_DIR="$HOME/Library/Application Support/superfile/lastdir"
+  command spf "$@"
+  [[ -f $SPF_LAST_DIR ]] && { . "$SPF_LAST_DIR"; rm -f -- "$SPF_LAST_DIR"; }
 }
 
 ########################################
@@ -104,22 +110,3 @@ function y() {
 if [ -f "$ZDOTDIR/.aliases" ]; then
   source "$ZDOTDIR/.aliases"
 fi
-
-########################################
-# NVM
-########################################
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
-
-########################################
-# Docker Desktop
-########################################
-# The following lines have been added by Docker Desktop to enable Docker CLI completions.
-fpath=(/Users/arthursatarov/.docker/completions $fpath)
-autoload -Uz compinit
-compinit
-# End of Docker CLI completions
-
-# Added by the Postman CLI installer
-export PATH='/Users/arthursatarov/.local/bin':"$PATH"
