@@ -1,9 +1,11 @@
 [user]
   name = Arthur Satarov
   email = asv.webdev@gmail.com
+  signingkey = ~/.ssh/id_ed25519.pub
 
 [core]
   editor = nvim           # Set default editor
+  pager = delta
 
 [init]
   defaultBranch = main
@@ -11,6 +13,48 @@
 [push]
   default = current       # Make `git push` automatically push relevant
   followTags = true       # Make `git push` push relevant annotated tags when pushing branches out
+  autoSetupRemote = true  # First push of a new branch sets upstream
+
+[pull]
+  rebase = true           # Rebase local commits on top instead of merge commits
+
+[fetch]
+  prune = true            # Drop remote-tracking branches deleted on the remote
+
+[rebase]
+  autoStash = true        # Stash dirty tree before rebase, restore after
+  updateRefs = true       # Move stacked branches along with the rebased one
+
+[rerere]
+  enabled = true          # Remember conflict resolutions and reuse them
+
+[diff]
+  algorithm = histogram
+  colorMoved = default
+
+[merge]
+  conflictstyle = zdiff3
+
+# Sign commits and tags with the SSH key
+[gpg]
+  format = ssh
+
+[gpg "ssh"]
+  allowedSignersFile = ~/.config/git/allowed_signers
+
+[commit]
+  gpgsign = true
+
+[tag]
+  gpgsign = true
+
+# delta: syntax-highlighted diffs (n/N jump between files)
+[interactive]
+  diffFilter = delta --color-only
+
+[delta]
+  navigate = true
+  line-numbers = true
 
 [filter "lfs"]
 	clean = git-lfs clean -- %f
