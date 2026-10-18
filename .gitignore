@@ -1,1 +1,4 @@
 tmux/plugins
+
+# Karabiner writes these next to its config
+karabiner/automatic_backups/

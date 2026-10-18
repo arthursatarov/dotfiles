@@ -15,3 +15,9 @@ superfile на macOS читает конфиг из `~/Library/Application Suppo
 ```sh
 ln -sf ~/.config/superfile/config.toml ~/Library/Application\ Support/superfile/config.toml
 ```
+
+Karabiner перезаписывает `karabiner.json` целиком, поэтому линкуется вся папка (из stow она исключена):
+
+```sh
+ln -s ../.dotfiles/karabiner ~/.config/karabiner
+```
