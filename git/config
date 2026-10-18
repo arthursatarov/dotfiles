@@ -6,9 +6,7 @@
   editor = nvim           # Set default editor
   autocrlf = input        # Tell's Git to convert CRLF to LF on commit
 
-  # Use custom `.gitignore` and `.gitattributes`.
-  excludesfile = ~/.gitignore_global
-  attributesfile = ~/.gitattributes
+  # ignore/attributes подхватываются автоматически из ~/.config/git/
 
 [init]
   defaultBranch = main

@@ -1,0 +1,6 @@
+--target=~/.config
+--no-folding
+--ignore=\.stowrc
+--ignore=\.DS_Store
+--ignore=^README\.md$
+--ignore=^windows$

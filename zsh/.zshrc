@@ -101,8 +101,8 @@ function y() {
 # Aliases
 ########################################
 
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
+if [ -f "$ZDOTDIR/.aliases" ]; then
+  source "$ZDOTDIR/.aliases"
 fi
 
 ########################################
@@ -120,3 +120,6 @@ fpath=(/Users/arthursatarov/.docker/completions $fpath)
 autoload -Uz compinit
 compinit
 # End of Docker CLI completions
+
+# Added by the Postman CLI installer
+export PATH='/Users/arthursatarov/.local/bin':"$PATH"
