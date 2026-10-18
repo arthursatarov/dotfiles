@@ -91,6 +91,27 @@ eval "$(zoxide init --cmd cd zsh)"
 # fnm (Node version manager, switches on .nvmrc / .node-version)
 eval "$(fnm env --use-on-cd --shell zsh)"
 
+# PHP: per-project version from the nearest .php-version (e.g. "8.2"),
+# falls back to the linked `php` formula. Older versions: brew install shivammathur/php/php@7.4
+function _php_version_use() {
+  local dir=$PWD ver=
+  while [[ -n $dir ]]; do
+    [[ -f $dir/.php-version ]] && { ver=$(<$dir/.php-version); break; }
+    dir=${dir%/*}
+  done
+  path=(${path:#$HOMEBREW_PREFIX/opt/php@*/(s|)bin})
+  ver=${(M)ver##<->.<->}
+  [[ -z $ver ]] && return
+  if [[ -d $HOMEBREW_PREFIX/opt/php@$ver/bin ]]; then
+    path=($HOMEBREW_PREFIX/opt/php@$ver/bin $HOMEBREW_PREFIX/opt/php@$ver/sbin $path)
+  else
+    print -P "%F{yellow}php $ver from .php-version is not installed: brew install shivammathur/php/php@$ver%f"
+  fi
+}
+autoload -Uz add-zsh-hook
+add-zsh-hook chpwd _php_version_use
+_php_version_use
+
 # Ngrok
 if command -v ngrok &>/dev/null; then
   eval "$(ngrok completion)"
