@@ -4,9 +4,6 @@
 
 [core]
   editor = nvim           # Set default editor
-  autocrlf = input        # Tell's Git to convert CRLF to LF on commit
-
-  # ignore/attributes подхватываются автоматически из ~/.config/git/
 
 [init]
   defaultBranch = main
@@ -20,3 +17,7 @@
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+# Рабочие репозитории — рабочая почта
+[includeIf "gitdir/i:~/code/adm/"]
+  path = ~/.config/git/work
