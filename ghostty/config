@@ -1,0 +1,61 @@
+# Ghostty — тонкий слой под tmux: сплиты/табы/сессии живут в tmux,
+# окна раскладывает aerospace. Полный список опций: `ghostty +show-config --default --docs`
+
+# ==========================
+# ===   Appearance       ===
+# ==========================
+
+# Как и в tmux — rose-pine, переключается вместе с системной темой
+theme = light:Rose Pine Dawn,dark:Rose Pine
+
+font-family = JetBrainsMonoNL Nerd Font Mono
+font-size = 14
+adjust-cell-height = 10%
+
+background-opacity = 0.95
+background-blur = 20
+
+window-padding-x = 8
+window-padding-y = 6
+window-padding-balance = true
+# Фон padding'а = фон последней строки (не будет рамки вокруг nvim/tmux)
+window-padding-color = extend
+
+# Aerospace тайлит окна — заголовок не нужен
+macos-titlebar-style = hidden
+window-save-state = never
+
+cursor-style = block
+cursor-style-blink = false
+mouse-hide-while-typing = true
+
+# ==========================
+# ===   Behavior         ===
+# ==========================
+
+# Левый Option работает как Alt (для tmux M-* и zsh), правый — для ввода символов
+macos-option-as-alt = left
+
+# Курсор отдаём zsh/nvim, остальное из shell integration оставляем
+shell-integration-features = no-cursor,sudo,title
+
+copy-on-select = clipboard
+clipboard-read = allow
+clipboard-paste-protection = false
+
+confirm-close-surface = false
+quit-after-last-window-closed = true
+
+# Скроллбэк всё равно в tmux
+scrollback-limit = 10000000
+
+# ==========================
+# ===   Key bindings     ===
+# ==========================
+
+# Quick terminal поверх всего (нужен доступ в Accessibility)
+keybind = global:ctrl+grave_accent=toggle_quick_terminal
+quick-terminal-position = top
+quick-terminal-animation-duration = 0.1
+
+keybind = cmd+shift+comma=reload_config
