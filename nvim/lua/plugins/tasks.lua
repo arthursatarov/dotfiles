@@ -3,8 +3,42 @@
 --   <leader>rr  pick a task and run it       <leader>rt  toggle the task list
 --   <leader>ra  task actions (restart, stop, open output, ...)
 -- Tip: if your gulp tasks are not exposed as npm scripts, use `:OverseerShell npx gulp <task>`.
+--   <leader>rf  run the current file (like Code Runner), output in a terminal split
+
+local runners = {
+  php = "php",
+  javascript = "node",
+  typescript = "npx --yes tsx",
+  sh = "bash",
+  bash = "bash",
+  zsh = "zsh",
+  lua = "nvim -l",
+  python = "python3",
+}
+
+local function run_file()
+  local cmd = runners[vim.bo.filetype]
+  if not cmd then
+    vim.notify("No runner for filetype: " .. vim.bo.filetype, vim.log.levels.WARN)
+    return
+  end
+  vim.cmd("silent update")
+  local script = cmd .. " " .. vim.fn.shellescape(vim.fn.expand("%:p")) .. "; echo; read -sk '?[done, any key closes]'"
+  Snacks.terminal.open({ "zsh", "-c", script }, {
+    cwd = vim.fn.expand("%:p:h"),
+    win = { position = "bottom", height = 0.3 },
+  })
+end
 
 return {
+  {
+    "folke/snacks.nvim",
+    optional = true,
+    keys = {
+      { "<leader>rf", run_file, desc = "Run current file" },
+    },
+  },
+
   {
     "stevearc/overseer.nvim",
     cmd = { "OverseerRun", "OverseerToggle", "OverseerShell", "OverseerTaskAction" },

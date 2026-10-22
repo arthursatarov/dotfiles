@@ -58,7 +58,7 @@ lua/plugins/
   git.lua                 gitsigns, diffview
   editor.lua              surround, flash, todo-comments, trouble, sessions
   docker.lua              lazydocker + docker compose helpers
-  tasks.lua               overseer (run npm / composer / make tasks)
+  tasks.lua               overseer (run npm / composer / make tasks), run current file
   database.lua            vim-dadbod + UI + completion (MySQL / PostgreSQL)
   obsidian.lua            obsidian.nvim + render-markdown.nvim
   debug.lua               nvim-dap (PHP + Xdebug), neotest (PHPUnit)
@@ -125,7 +125,7 @@ trigger (browser extension "Xdebug helper"). The default path mapping is `/var/w
 | `<leader>Dd` | lazydocker |
 | `<leader>Du` `<leader>DD` `<leader>Dl` `<leader>Dp` | compose up / down / logs / ps |
 | `<leader>Ds` / `<leader>Dc` | shell in a service / run a command in a service |
-| `<leader>rr` | run an npm / composer / make task |
+| `<leader>rr` / `<leader>rf` | run an npm / composer / make task / run the current file |
 | `<leader>Db` | database UI (dadbod); `<leader>S` in a query buffer runs it |
 | `]s` `[s` `z=` `zg` | next / prev misspelling, suggestions, add word |
 | `<leader>on` `<leader>oo` `<leader>os` | Obsidian: new note, open note, search |
