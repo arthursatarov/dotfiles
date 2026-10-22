@@ -153,11 +153,11 @@ return {
       vim.lsp.config("html", {
         filetypes = { "html", "twig", "htmldjango", "jinja" },
       })
+      -- In php, emmet items are kept only in the HTML parts of the file (see completion.lua).
       vim.lsp.config("emmet_language_server", {
         filetypes = {
           "css", "html", "htmldjango", "javascriptreact", "less", "sass", "scss",
-          "twig", "jinja", "typescriptreact",
-          -- add "php" here if you want emmet inside WordPress theme templates
+          "twig", "jinja", "php", "typescriptreact",
         },
       })
 

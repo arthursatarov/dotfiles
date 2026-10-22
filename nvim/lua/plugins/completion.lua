@@ -28,6 +28,19 @@ return {
         },
         providers = {
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
+          lsp = {
+            -- PHP files mix PHP and HTML: emmet only makes sense outside <?php ?>, otherwise
+            -- every identifier turns into a `<foo></foo>` suggestion. Treesitter knows the region.
+            transform_items = function(ctx, items)
+              if vim.bo[ctx.bufnr].filetype ~= "php" then return items end
+              local ok, parser = pcall(vim.treesitter.get_parser, ctx.bufnr)
+              if not ok or not parser then return items end
+              local row, col = ctx.cursor[1] - 1, math.max(ctx.cursor[2] - 1, 0)
+              parser:parse({ row, row + 1 }) -- make sure the HTML injection for this line is parsed
+              if parser:language_for_range({ row, col, row, col }):lang() == "html" then return items end
+              return vim.tbl_filter(function(item) return item.client_name ~= "emmet_language_server" end, items)
+            end,
+          },
         },
       },
       cmdline = { enabled = true },

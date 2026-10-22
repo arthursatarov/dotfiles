@@ -85,6 +85,9 @@ so core and vendor code is never reformatted by surprise:
 parser or server; it is opened as `htmldjango`, which gives decent `{% %}` / `{{ }}` highlighting plus
 HTML and Emmet completion. Twig/Nunjucks files are not auto-formatted.
 
+**Emmet in PHP.** Emmet works in the HTML parts of `.php` templates (outside `<?php ?>`);
+inside PHP code its suggestions are filtered out (`lua/plugins/completion.lua`).
+
 **Per-project overrides.** `exrc` is on: put a `.nvim.lua` in a project root and Neovim will ask
 once whether to trust it. Useful for Docker/Xdebug settings:
 
