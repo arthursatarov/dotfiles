@@ -13,6 +13,7 @@ vim.filetype.add({
     -- {% %} / {{ }} highlighting via Vim's built-in syntax and works with emmet/html LSP.
     njk = "htmldjango",
     nunjucks = "htmldjango",
+    j2 = "jinja", -- *.jinja is detected natively
     -- Twig is detected natively (*.twig, *.html.twig) -> filetype "twig".
   },
   filename = {

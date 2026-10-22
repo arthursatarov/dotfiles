@@ -149,14 +149,14 @@ return {
         },
       })
 
-      -- HTML + Emmet also for Twig / Nunjucks templates.
+      -- HTML + Emmet also for Twig / Nunjucks / Jinja templates.
       vim.lsp.config("html", {
-        filetypes = { "html", "twig", "htmldjango" },
+        filetypes = { "html", "twig", "htmldjango", "jinja" },
       })
       vim.lsp.config("emmet_language_server", {
         filetypes = {
           "css", "html", "htmldjango", "javascriptreact", "less", "sass", "scss",
-          "twig", "typescriptreact",
+          "twig", "jinja", "typescriptreact",
           -- add "php" here if you want emmet inside WordPress theme templates
         },
       })

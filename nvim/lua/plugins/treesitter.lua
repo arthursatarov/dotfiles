@@ -3,7 +3,7 @@
 
 local parsers = {
   "bash", "css", "diff", "dockerfile", "git_config", "git_rebase", "gitcommit",
-  "gitignore", "html", "ini", "javascript", "jsdoc", "json", "lua",
+  "gitignore", "html", "ini", "javascript", "jinja", "jinja_inline", "jsdoc", "json", "lua",
   "luadoc", "markdown", "markdown_inline", "php", "query", "regex", "scss",
   "sql", "toml", "tsx", "twig", "typescript", "vim", "vimdoc", "xml", "yaml",
 }
