@@ -63,6 +63,7 @@ lua/plugins/
   obsidian.lua            obsidian.nvim + render-markdown.nvim
   debug.lua               nvim-dap (PHP + Xdebug), neotest (PHPUnit)
   ai.lua                  Claude Code integration
+spell/en.utf-8.add        own spell-check words (`zg` adds here)
 ```
 
 ## 4. Per-project setup (WordPress / Drupal / Docker)
@@ -126,6 +127,7 @@ trigger (browser extension "Xdebug helper"). The default path mapping is `/var/w
 | `<leader>Ds` / `<leader>Dc` | shell in a service / run a command in a service |
 | `<leader>rr` | run an npm / composer / make task |
 | `<leader>Db` | database UI (dadbod); `<leader>S` in a query buffer runs it |
+| `]s` `[s` `z=` `zg` | next / prev misspelling, suggestions, add word |
 | `<leader>on` `<leader>oo` `<leader>os` | Obsidian: new note, open note, search |
 | `<leader>ot` `<leader>ob` `<leader>oT` | Obsidian: today's daily note, backlinks, insert template |
 | `<CR>` on a `[[link]]` | follow the link (also toggles checkboxes) |

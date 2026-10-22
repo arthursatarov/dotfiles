@@ -65,6 +65,19 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+-- Code: spell-check comments and strings (cSpell-style), without the capital-letter check.
+vim.api.nvim_create_autocmd("FileType", {
+  group = augroup("code_spell"),
+  pattern = {
+    "php", "javascript", "javascriptreact", "typescript", "typescriptreact",
+    "css", "scss", "html", "twig", "htmldjango", "jinja", "lua", "sh", "bash", "zsh",
+  },
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spellcapcheck = ""
+  end,
+})
+
 -- PHP: 4 spaces by default (WordPress/Drupal projects usually ship an .editorconfig
 -- that overrides this: Neovim honors .editorconfig automatically).
 vim.api.nvim_create_autocmd("FileType", {

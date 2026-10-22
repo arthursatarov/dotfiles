@@ -46,6 +46,15 @@ opt.clipboard = "unnamedplus" -- share the system clipboard (macOS pbcopy/pbpast
 opt.completeopt = { "menu", "menuone", "noselect" }
 opt.jumpoptions = "view"
 opt.spelllang = { "en", "ru" }
+-- Like cSpell: split camelCase words, and in code only check what treesitter marks
+-- as prose (comments, strings). Own words: `zg` adds to spell/en.utf-8.add in this repo.
+opt.spelloptions = { "camel", "noplainbuffer" }
+local spellfile = vim.fn.stdpath("config") .. "/spell/en.utf-8.add"
+opt.spellfile = spellfile
+-- The compiled .spl is not in git: rebuild it whenever the word list is newer (fresh clone, git pull).
+if vim.fn.getftime(spellfile) > vim.fn.getftime(spellfile .. ".spl") then
+  vim.cmd("silent mkspell! " .. vim.fn.fnameescape(spellfile))
+end
 
 -- Files / performance --------------------------------------------------------
 opt.undofile = true
