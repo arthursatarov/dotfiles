@@ -22,3 +22,9 @@ Karabiner перезаписывает `karabiner.json` целиком, поэт
 ```sh
 ln -s ../.dotfiles/karabiner ~/.config/karabiner
 ```
+
+Obsidian (плагин Vimrc Support) читает `.obsidian.vimrc` из корня vault, поэтому папка исключена из stow и линкуется в каждый vault:
+
+```sh
+ln -s ~/.dotfiles/obsidian/.obsidian.vimrc <vault>/.obsidian.vimrc
+```

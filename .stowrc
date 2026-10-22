@@ -5,4 +5,5 @@
 --ignore=README\.md$
 --ignore=^windows$
 --ignore=^karabiner$
+--ignore=^obsidian$
 --ignore=^Brewfile$
