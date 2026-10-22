@@ -45,6 +45,7 @@ return {
         yaml = { "prettier" },
         markdown = { "prettier" },
         lua = { "stylua" },
+        toml = { "taplo" }, -- the CLI; taplo's LSP returns no edits for files outside a workspace
         sh = { "shfmt" },
         bash = { "shfmt" },
         -- PHP: use whatever the project is configured for. With neither config present,

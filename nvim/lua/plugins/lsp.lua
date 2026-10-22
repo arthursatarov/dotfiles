@@ -18,6 +18,7 @@ local servers = {
   "marksman", -- Markdown / Obsidian-style links
   "jsonls",
   "yamlls",
+  "taplo", -- TOML (also formats it)
   "lua_ls", -- for editing this config
   "bashls",
 }

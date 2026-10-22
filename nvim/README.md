@@ -52,7 +52,7 @@ lua/plugins/
   treesitter.lua          syntax parsers (php, twig, html, css, scss, js, ts, ...)
   lsp.lua                 Mason + native vim.lsp.config for every language server
   completion.lua          blink.cmp, autopairs
-  formatting.lua          conform (prettier, phpcbf, php-cs-fixer, stylua) + nvim-lint (phpcs, hadolint)
+  formatting.lua          conform (prettier, phpcbf, php-cs-fixer, stylua, taplo) + nvim-lint (phpcs, hadolint)
   snacks.lua              pickers, lazygit, terminal, notifications, dashboard
   explorer.lua            neo-tree (classic file tree)
   git.lua                 gitsigns, diffview
