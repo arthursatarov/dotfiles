@@ -12,6 +12,8 @@ typeset -U path
 path=(
   $HOME/.local/bin                          # Postman CLI and other user binaries
   $path
+  $HOMEBREW_PREFIX/opt/mysql-client/bin     # mysql (keg-only), used by vim-dadbod
+  $HOMEBREW_PREFIX/opt/libpq/bin            # psql (keg-only), used by vim-dadbod
   /Applications/Obsidian.app/Contents/MacOS # Obsidian CLI
 )
 

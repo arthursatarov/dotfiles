@@ -39,6 +39,10 @@ brew "jq"
 brew "lazydocker"
 # Simple terminal UI for git commands
 brew "lazygit"
+# Postgres C API library
+brew "libpq"
+# Open source relational database management system
+brew "mysql-client"
 # Ambitious Vim-fork focused on extensibility and agility
 brew "neovim"
 # Prompt theme engine for any shell

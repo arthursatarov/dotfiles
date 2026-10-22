@@ -15,6 +15,7 @@ cp -R nvim ~/.config/nvim
 
 # 3. system dependencies (macOS / Homebrew)
 brew install neovim git ripgrep fd lazygit lazydocker tree-sitter-cli pngpaste
+brew install mysql-client libpq   # DB clients for vim-dadbod (keg-only, added to PATH in .zprofile)
 brew install php composer      # only for host-side PHP tooling (phpcs, php-cs-fixer); see section 4
 
 # 4. start Neovim from a terminal where fnm is active (Mason installs servers via npm)
@@ -58,6 +59,7 @@ lua/plugins/
   editor.lua              surround, flash, todo-comments, trouble, sessions
   docker.lua              lazydocker + docker compose helpers
   tasks.lua               overseer (run npm / composer / make tasks)
+  database.lua            vim-dadbod + UI + completion (MySQL / PostgreSQL)
   obsidian.lua            obsidian.nvim + render-markdown.nvim
   debug.lua               nvim-dap (PHP + Xdebug), neotest (PHPUnit)
   ai.lua                  Claude Code integration
@@ -123,6 +125,7 @@ trigger (browser extension "Xdebug helper"). The default path mapping is `/var/w
 | `<leader>Du` `<leader>DD` `<leader>Dl` `<leader>Dp` | compose up / down / logs / ps |
 | `<leader>Ds` / `<leader>Dc` | shell in a service / run a command in a service |
 | `<leader>rr` | run an npm / composer / make task |
+| `<leader>Db` | database UI (dadbod); `<leader>S` in a query buffer runs it |
 | `<leader>on` `<leader>oo` `<leader>os` | Obsidian: new note, open note, search |
 | `<leader>ot` `<leader>ob` `<leader>oT` | Obsidian: today's daily note, backlinks, insert template |
 | `<CR>` on a `[[link]]` | follow the link (also toggles checkboxes) |

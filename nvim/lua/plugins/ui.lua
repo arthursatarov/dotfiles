@@ -106,7 +106,7 @@ return {
         { "<leader>b", group = "buffer" },
         { "<leader>c", group = "code" },
         { "<leader>d", group = "debug" },
-        { "<leader>D", group = "docker", icon = "\u{f308}" },
+        { "<leader>D", group = "docker / database", icon = "\u{f308}" },
         { "<leader>f", group = "find / files" },
         { "<leader>g", group = "git" },
         { "<leader>h", group = "git hunks" },
