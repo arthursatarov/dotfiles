@@ -1,6 +1,8 @@
 -- snacks.nvim: picker (files / grep / LSP), lazygit, terminal, notifications,
 -- dashboard, indent guides, word jumps. One plugin instead of ten.
 
+local search_exclude = { "node_modules", "vendor", "wp-content/uploads", "sites/*/files" }
+
 return {
   {
     "folke/snacks.nvim",
@@ -16,8 +18,10 @@ return {
       picker = {
         enabled = true,
         sources = {
-          files = { hidden = true }, -- show dotfiles, still respects .gitignore
-          grep = { hidden = true },
+          -- Show dotfiles, still respect .gitignore, and skip dependencies / uploads
+          -- even in projects that commit them (same list as search.exclude in VSCode).
+          files = { hidden = true, exclude = search_exclude },
+          grep = { hidden = true, exclude = search_exclude },
         },
       },
       quickfile = { enabled = true },
