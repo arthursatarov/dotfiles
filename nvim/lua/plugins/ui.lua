@@ -11,6 +11,21 @@ return {
       variant = "auto", -- follows 'background': main when dark, dawn when light
       dark_variant = "main",
       styles = { transparency = true }, -- let Ghostty's opacity/blur show through
+      -- Rainbow indent guides (snacks.lua)
+      highlight_groups = {
+        SnacksIndent1 = { fg = "love" },
+        SnacksIndent2 = { fg = "gold" },
+        SnacksIndent3 = { fg = "rose" },
+        SnacksIndent4 = { fg = "pine" },
+        SnacksIndent5 = { fg = "foam" },
+        SnacksIndent6 = { fg = "iris" },
+      },
+      -- rose-pine's `blend` only touches bg, so mute the guide colors here.
+      before_highlight = function(group, hl, palette)
+        if group:match("^SnacksIndent%d$") and hl.fg then
+          hl.fg = require("rose-pine.utilities").blend(hl.fg, palette.base, 0.35)
+        end
+      end,
     },
     config = function(_, opts)
       require("rose-pine").setup(opts)

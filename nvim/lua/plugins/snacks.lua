@@ -12,7 +12,11 @@ return {
     opts = {
       bigfile = { enabled = true },
       dashboard = { enabled = true },
-      indent = { enabled = true },
+      -- Rainbow guides like indent-rainbow; colors are set in ui.lua (rose-pine highlight_groups).
+      indent = {
+        enabled = true,
+        indent = { hl = { "SnacksIndent1", "SnacksIndent2", "SnacksIndent3", "SnacksIndent4", "SnacksIndent5", "SnacksIndent6" } },
+      },
       input = { enabled = true },
       notifier = { enabled = true, timeout = 3000 },
       picker = {
