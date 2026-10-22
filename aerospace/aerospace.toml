@@ -24,7 +24,7 @@ default-root-container-orientation = 'auto'
 automatically-unhide-macos-hidden-apps = true
 
 # Keep workspaces present even when empty
-persistent-workspaces = ["web", "notes", "docs", "chat", "design", "code", "term", "ai"]
+persistent-workspaces = ["web", "notes", "docs", "chat", "design", "code", "term", "ai", "files"]
 
 # Mouse follows the focused monitor
 on-focused-monitor-changed = ['move-mouse monitor-lazy-center']
@@ -84,7 +84,7 @@ on-mode-changed = []
   alt-6 = 'workspace code'
   alt-7 = 'workspace term'
   alt-8 = 'workspace ai'
-  alt-9 = 'workspace 9'
+  alt-9 = 'workspace files'
 
   alt-shift-1 = 'move-node-to-workspace web'
   alt-shift-2 = 'move-node-to-workspace notes'
@@ -94,7 +94,7 @@ on-mode-changed = []
   alt-shift-6 = 'move-node-to-workspace code'
   alt-shift-7 = 'move-node-to-workspace term'
   alt-shift-8 = 'move-node-to-workspace ai'
-  alt-shift-9 = 'move-node-to-workspace 9'
+  alt-shift-9 = 'move-node-to-workspace files'
 
   alt-tab = 'workspace-back-and-forth'
   alt-shift-tab = 'move-workspace-to-monitor --wrap-around next'
@@ -272,6 +272,15 @@ on-mode-changed = []
 [[on-window-detected]]
   if.app-id = 'com.anthropic.claudefordesktop'
   run = 'move-node-to-workspace ai'
+
+# files (alt-9)
+[[on-window-detected]]
+  if.app-id = 'com.binarynights.ForkLift'
+  run = 'move-node-to-workspace files'
+
+[[on-window-detected]]
+  if.app-id = 'org.yanex.marta'
+  run = 'move-node-to-workspace files'
 
 ########################################
 ### Window Rules: Floating
